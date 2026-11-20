@@ -5,7 +5,7 @@ A chess engine in 4 KB of Python for the make.fun bounty
 
 ## How to run
 
-The entry is a single file, `main.py` (4,086 bytes). It plays through
+The entry is a single file, `main.py` (3,342 bytes). It plays through
 the environment at `MAKEFUN_ENV_URL`:
 
 ```
