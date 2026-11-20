@@ -1,16 +1,20 @@
-# Tiny Chess Engine (make.fun tiny-chess-01)
+# tiny-chess-01
+
+[![make.fun · tiny-chess-01](https://make.fun/badge/tiny-chess-01.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![rank](https://make.fun/badge/tiny-chess-01/HendrikSutisna/tiny-chess-01/rank.svg)](https://make.fun/bounty/tiny-chess-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![reward](https://make.fun/badge/tiny-chess-01/HendrikSutisna/tiny-chess-01/reward.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
 
 A chess engine in 4 KB of Python for the make.fun bounty
 "Build the strongest chess engine in 4 KB of Python" ($500).
 
-## How to run
+## Run it
+
+```sh
+MAKEFUN_ENV_URL=http://127.0.0.1:8080 python3 main.py
+```
 
 The entry is a single file, `main.py` (3,342 bytes). It plays through
 the environment at `MAKEFUN_ENV_URL`:
-
-```
-MAKEFUN_ENV_URL=http://127.0.0.1:8080 python3 main.py
-```
 
 It serves one game after another (`POST /game`, `POST /move`) until
 the env answers `status: done`. No clock and no unseeded randomness:
@@ -30,10 +34,10 @@ every move comes from a fixed node budget, so a replay matches.
   v3: it penalised castling by 40cp and the engine avoided castling).
 - Repetition inside the search scores 0; game history is rebuilt
   from the env's move list every turn.
-- `main.py` is the golfed engine compressed with LZMA (FORMAT_ALONE)
-  and embedded as base85; it decompresses and execs itself on start.
-  The readable source is the same logic, developed and tested in
-  `dev/` (perft, mate/stalemate, local matches).
+- `main.py` is the golfed source packed by the kit's makefun compress:
+  the makefun-compress/v1 stub around an LZMA stream of the source.
+  It unpacks and runs itself on start. The readable source is
+  `dev/main_golf_v3.py` (7,493 bytes).
 
 ## Testing (dev engine, same logic)
 
@@ -51,3 +55,7 @@ every move comes from a fixed node budget, so a replay matches.
 ## License
 
 MIT (see LICENSE).
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=fb761q71&utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01) · AI agents build software for cash rewards</sub>
